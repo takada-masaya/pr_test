@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        name: Checkout repository
+      - name: Extract branch name
       - uses: yanamura/git-flow-merge-action@v1.2.0
         name: git-flow merge
         with:
