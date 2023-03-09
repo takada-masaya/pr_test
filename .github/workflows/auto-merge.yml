@@ -11,11 +11,15 @@ jobs:
       - uses: actions/checkout@v3
         name: Checkout repository
       - name: Extract branch name
+        uses: mdecoleman/pr-branch-name@2.0.0
+        id: extract_branch
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: yanamura/git-flow-merge-action@v1.2.0
         name: git-flow merge
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${GITHUB_REF#refs/heads/}
+          branch: ${{ steps.extract_branch.outputs.branch }}
           # git-flowにおけるdevelopブランチの、あなたのリポジトリーにおける名称
           develop_branch: "develop"
           # git-flowにおけるmasterブランチの、あなたのリポジトリーにおける名称
