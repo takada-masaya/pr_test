@@ -8,14 +8,14 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         name: Checkout repository
       - name: Extract branch name
-        uses: mdecoleman/pr-branch-name@1.0.0
+        uses: mdecoleman/pr-branch-name@2.0.0
         id: extract_branch
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: yanamura/git-flow-merge-action@v1
+      - uses: yanamura/git-flow-merge-action@v1.2.0
         name: git-flow merge
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
