@@ -1,0 +1,26 @@
+on:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+jobs:
+  auto-merge:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout repository
+      - name: Extract branch name
+        uses: mdecoleman/pr-branch-name@1.0.0
+        id: extract_branch
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: yanamura/git-flow-merge-action@v1
+        name: git-flow merge
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.extract_branch.outputs.branch }}
+          # git-flowにおけるdevelopブランチの、あなたのリポジトリーにおける名称
+          develop_branch: "develop"
+          # git-flowにおけるmasterブランチの、あなたのリポジトリーにおける名称
+          main_branch: "main"
