@@ -1,4 +1,4 @@
-version 0.6.0  
+version 0.6.1  
 add row1  
 add row2  
 add row3  
