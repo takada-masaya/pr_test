@@ -20,7 +20,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ steps.extract_branch.outputs.branch }}
-          # git-flowにおけるdevelopブランチの、あなたのリポジトリーにおける名称
           develop_branch: "develop"
-          # git-flowにおけるmasterブランチの、あなたのリポジトリーにおける名称
           main_branch: "main"
