@@ -17,7 +17,7 @@ jobs:
         id: extract_branch
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: yanamura/git-flow-merge-action@v1.2.0
+      - uses: yanamura/git-flow-merge-action@v1.4.0
         name: git-flow merge
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
